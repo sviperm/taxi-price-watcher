@@ -21,9 +21,7 @@ citimobil = CitimobilParser(pick_up_address, dest_address)
 options = webdriver.ChromeOptions()
 options.add_argument("--headless")
 driver = webdriver.Chrome(options=options,
-                          executable_path=("/home/sviperm/Documents"
-                                           "/GitHub/taxi-price-watcher/"
-                                           "files/chromedriver"))
+                          executable_path=("./files/chromedriver"))
 
 
 def collect_data():
