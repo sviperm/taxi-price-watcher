@@ -16,7 +16,9 @@ dest_address = os.getenv("DEST_ADDRESS")
 weather_url = os.getenv("YANDEX_WEATHER_URL")
 
 yandex = YandexTaxiParser(pick_up_address, dest_address)
+yandex_bwd = YandexTaxiParser(dest_address, pick_up_address)
 citimobil = CitimobilParser(pick_up_address, dest_address)
+citimobil_bwd = CitimobilParser(dest_address, pick_up_address)
 
 options = webdriver.ChromeOptions()
 options.add_argument("--headless")
@@ -26,7 +28,7 @@ driver = webdriver.Chrome(options=options,
 
 def collect_data():
     result = []
-    for parser in tqdm([yandex, citimobil]):
+    for parser in tqdm([yandex, citimobil, yandex_bwd, citimobil_bwd]):
         try:
             result.extend(parser.get_price(driver))
         except Exception as e:
