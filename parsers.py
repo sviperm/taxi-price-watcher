@@ -22,6 +22,12 @@ class TaxiParser:
         self._tariff_price_class_name = tariff_price_class_name
         self._tariffs = None
 
+    def __str__(self):
+        return f"{self.taxi_name}: {self.pick_up_address} -- {self.arrival_address}"
+
+    def __repr__(self):
+        return self.__str__()
+
     @abstractmethod
     def parse(self, driver):
         pass
